@@ -1,0 +1,36 @@
+<h1>User Registration Form</h1>
+<br/>
+<form *ngIf="userFormGroup" [formGroup]="userFormGroup">
+  <div class="form-group">
+      <label>First Name</label>
+      <input type="text" formControlName="firstName" class="form-control"/>
+      <small class="form-text text-danger" *ngIf="userFormGroup.controls.firstName.errors">{{userFormGroup.controls.firstName.errors.required.message}}<br/></small>
+  </div>
+
+  <div class="form-group">
+      <label>Last Name</label>
+      <input type="text" formControlName="lastName" class="form-control"/>
+      <small class="form-text text-danger" *ngIf="userFormGroup.controls.lastName.errors">{{userFormGroup.controls.lastName.errors.required.message}}<br/></small>
+  </div>
+
+  <div class="form-group">
+      <label>User Name</label>
+      <input type="text" formControlName="userName" class="form-control"/>
+      <small class="form-text text-danger" *ngIf="userFormGroup.controls.userName.errors && userFormGroup.controls.userName.errors.required">{{userFormGroup.controls.userName.errors.required.message}}<br/></small>
+      <small class="form-text text-danger" *ngIf="userFormGroup.controls.userName.errors && userFormGroup.controls.userName.errors.alpha">{{userFormGroup.controls.userName.errors.alpha.message}}<br/></small>
+  </div>
+
+  <div class="form-group">
+      <label>Password</label>
+      <input type="password" formControlName="password" class="form-control"/>
+      <small class="form-text text-danger" *ngIf="userFormGroup.controls.password.errors && userFormGroup.controls.password.errors.required">{{userFormGroup.controls.password.errors.required.message}}</small>
+      <small class="form-text text-danger" *ngIf="userFormGroup.controls.password.errors && userFormGroup.controls.password.errors.minLength">{{userFormGroup.controls.password.errors.minLength.message}}<br/></small>
+  </div>
+
+  <div class="form-group">
+      <label>Confirm Password</label>
+      <input type="password" formControlName="confirmPassword" class="form-control"/>
+      <small class="form-text text-danger" *ngIf="userFormGroup.controls.confirmPassword.errors && userFormGroup.controls.confirmPassword.errors.compare">{{userFormGroup.controls.confirmPassword.errors.compare.message}}<br/></small>
+  </div>
+  <button [disabled]="!userFormGroup.valid" class="btn btn-primary">Submit</button>
+</form>
